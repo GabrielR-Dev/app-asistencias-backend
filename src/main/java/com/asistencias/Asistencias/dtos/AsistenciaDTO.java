@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class AsistenciaDTO {
+    private Long id;
     private String titulo;
     private String descripcion;
     private String nombreLugar;
@@ -18,6 +19,7 @@ public class AsistenciaDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime horaFin;
     private Long eventoId;
+    private int cantColaboradores;
 
     public String getTitulo() {
         return titulo;
@@ -26,6 +28,23 @@ public class AsistenciaDTO {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    public int getCantColaboradores() {
+        return cantColaboradores;
+    }
+
+    public void setCantColaboradores(int cantColaboradores) {
+        this.cantColaboradores = cantColaboradores;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public String getDescripcion() {
         return descripcion;
@@ -82,4 +101,5 @@ public class AsistenciaDTO {
     public void setEventoId(Long eventoId) {
         this.eventoId = eventoId;
     }
+
 }

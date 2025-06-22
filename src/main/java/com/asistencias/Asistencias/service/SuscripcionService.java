@@ -1,5 +1,6 @@
 package com.asistencias.Asistencias.service;
 
+import com.asistencias.Asistencias.dtos.EventoResponseDTO;
 import com.asistencias.Asistencias.dtos.SuscripcionDTO;
 import com.asistencias.Asistencias.entities.Asistencia;
 import com.asistencias.Asistencias.entities.Evento;
@@ -9,6 +10,7 @@ import com.asistencias.Asistencias.repositories.IAsistenciaRepository;
 import com.asistencias.Asistencias.repositories.IEventoRepository;
 import com.asistencias.Asistencias.repositories.ISuscripcionRepository;
 import com.asistencias.Asistencias.repositories.IUsuarioRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import java.rmi.AccessException;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +32,8 @@ public class SuscripcionService {
     private IEventoRepository eventoRepository;
     @Autowired
     private ISuscripcionRepository suscripcionRepository;
+    @Autowired
+    private ModelMapper modelMapper;
     public ResponseEntity<?> suscripcion(SuscripcionDTO suscripcionDTO) {
 
         String userLog = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -45,7 +50,7 @@ public class SuscripcionService {
         Suscripcion suscripcion = new Suscripcion(usuario,evento);
 
         suscripcionRepository.save(suscripcion);
-        return ResponseEntity.status(HttpStatus.OK).body("Usuario suscripto correctamente.");
+        return ResponseEntity.ok(Map.of("message", "Usuario suscripto correctamente."));
     }
 
     public ResponseEntity<?> suscripcionesDelUsuario() {
@@ -61,21 +66,32 @@ public class SuscripcionService {
         List<Evento> eventosSuscripto = misSuscripciones.stream()
                 .map(Suscripcion::getEvento)
                 .collect(Collectors.toList());
+        List<EventoResponseDTO> eventoResponseDTOS = eventosSuscripto.stream()
+                .map((evento)-> modelMapper.map(evento, EventoResponseDTO.class))
+                .collect(Collectors.toList());
 
-        return ResponseEntity.ok(eventosSuscripto);
+        return ResponseEntity.ok(eventoResponseDTOS);
     }
 
 
-    public ResponseEntity<?> eliminarSuscripcion(Long id) {
-        String userLog = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuario usuario = usuarioRepository.findByEmail(userLog).orElseThrow();
+    public ResponseEntity<?> eliminarSuscripcion(Long eventoId) {
+        String emailUsuario = SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getName();
 
-        Suscripcion suscripcion = suscripcionRepository.findById(id).orElseThrow(()->{return new AccessDeniedException("Suscripcion no existe.");});
+        Usuario usuario = usuarioRepository.findByEmail(emailUsuario)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado."));
 
-        if(suscripcion.getUsuario() != usuario) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No puedes desuscribirte a esta suscripcion.");
+        // Buscar la suscripción del usuario al evento
+        Suscripcion suscripcion = suscripcionRepository.findAllByUsuarioId(usuario.getId()).stream()
+                .filter(s -> s.getEvento().getId().equals(eventoId))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("No estás suscripto a este evento."));
 
-        suscripcionRepository.deleteById(suscripcion.getId());
+        // Eliminar
+        suscripcionRepository.delete(suscripcion);
 
-        return ResponseEntity.ok().body("Te desuscribiste correctamente.");
+        return ResponseEntity.ok(Map.of("message", "Te desuscribiste correctamente."));
+
     }
 }

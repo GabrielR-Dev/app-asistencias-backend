@@ -22,6 +22,8 @@ public class Usuario {
     private Long id;
 
     private String nombre;
+    private String apellido;
+
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -74,6 +76,16 @@ public class Usuario {
         this.contrasenia = contrasenia;
         this.fechaCreado = fechaCreado;
         this.fechaActualizado = fechaActualizado;
+    }
+
+    public Usuario(String nombre, String apellido, String email, String contrasenia, LocalDateTime fechaCreado, LocalDateTime fechaActualizado, List<Evento> eventosSuscripto) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.contrasenia = contrasenia;
+        this.fechaCreado = fechaCreado;
+        this.fechaActualizado = fechaActualizado;
+        this.eventosSuscripto = eventosSuscripto;
     }
 
     // Getters and Setters
@@ -135,5 +147,17 @@ public class Usuario {
     }
     public void removeEventoSuscripto(Evento eventosSuscripto) {
         this.eventosSuscripto.remove(eventosSuscripto);
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setEventosSuscripto(List<Evento> eventosSuscripto) {
+        this.eventosSuscripto = eventosSuscripto;
     }
 }

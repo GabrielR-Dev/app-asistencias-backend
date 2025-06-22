@@ -25,15 +25,15 @@ public class AsistenciaController {
     @Autowired
     private IEventoRepository eventoRepository;
 
-    @GetMapping
-    public List<Asistencia> obtenerTodas() {
-        return asistenciaService.obtenerTodas();
+    @GetMapping("/evento/{idEvento}")
+    public ResponseEntity<?> obtenerTodas(@PathVariable Long idEvento) {
+        return asistenciaService.obtenerTodas(idEvento);
     }
 
-    @GetMapping("/{id}")
-    public Asistencia obtenerPorId(@PathVariable Long id) {
-        return asistenciaService.obtenerPorId(id).orElseThrow(() -> new RuntimeException("Asistencia no encontrada"));
-    }
+    /*@GetMapping("/evento&id={idEvento}/{idAsistencia}")
+    public ResponseEntity<?> obtenerPorId(@PathVariable Long idEvento, @PathVariable Long idAsistencia) {
+        return asistenciaService.obtenerPorId(idEvento,idAsistencia);
+    }*/
 
     @PostMapping
     public ResponseEntity<?> crear(@RequestBody AsistenciaDTO asistenciaDTO) {
@@ -49,7 +49,8 @@ public class AsistenciaController {
                 asistenciaDTO.getFecha(),
                 asistenciaDTO.getHoraInicio(),
                 asistenciaDTO.getHoraFin(),
-                asistenciaDTO.getEventoId()
+                asistenciaDTO.getEventoId(),
+                asistenciaDTO.getCantColaboradores()
         );
 
         return asistenciaService.crearAsistencia(asistencia, evento);

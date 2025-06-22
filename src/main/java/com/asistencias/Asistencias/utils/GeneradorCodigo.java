@@ -10,7 +10,11 @@ public class GeneradorCodigo {
     @Bean
     public static String generarCodigo() {
         String uuid = UUID.randomUUID().toString().replace("-", "");
-        return uuid.substring(0, 6).toUpperCase(); // Ej: "F3A9C1"
+        return uuid.substring(0, 6).toUpperCase();
     }
-
+    @Bean
+    public static String generarCodigoInvitacion() {
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        return uuid.substring(0, 10).toUpperCase();
+    }
 }

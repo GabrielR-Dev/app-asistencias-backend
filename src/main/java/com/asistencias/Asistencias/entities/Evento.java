@@ -2,9 +2,7 @@ package com.asistencias.Asistencias.entities;
 
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +12,6 @@ public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
     private String descripcion;
     private String codigoInvitacion;
@@ -22,13 +19,45 @@ public class Evento {
     @ManyToOne
     @JoinColumn(name = "creador_id", nullable = false)
     private Usuario creador;
-
     private LocalDateTime fechaCreacion;
+    private String organizadorNombre;
+    private String organizadorApellido;
 
-    private List<Long> asistencias = new ArrayList<>();
+
+    public String getCodigoInvitacion() {
+        return codigoInvitacion;
+    }
+
+    public String getOrganizadorNombre() {
+        return organizadorNombre;
+    }
+
+    public void setOrganizadorNombre(String organizadorNombre) {
+        this.organizadorNombre = organizadorNombre;
+    }
+
+    public String getOrganizadorApellido() {
+        return organizadorApellido;
+    }
+
+    public void setOrganizadorApellido(String organizadorApellido) {
+        this.organizadorApellido = organizadorApellido;
+    }
 
     public Evento() {
     }
+
+    public Evento(String nombre, String descripcion, String codigoInvitacion, Usuario creador, LocalDateTime fechaCreacion, String organizadorNombre, String organizadorApellido) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.codigoInvitacion = codigoInvitacion;
+        this.creador = creador;
+        this.fechaCreacion = fechaCreacion;
+        this.organizadorNombre = organizadorNombre;
+        this.organizadorApellido = organizadorApellido;
+    }
+
+
 
     public Evento(String nombre, String descripcion, String codigoInvitacion) {
         this.nombre = nombre;
@@ -84,7 +113,7 @@ public class Evento {
         this.descripcion = descripcion;
     }
 
-    public String getCodigoInvitacion() {
+    public String getCodigoInvitacion(String s) {
         return codigoInvitacion;
     }
 
@@ -108,14 +137,4 @@ public class Evento {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public List<Long> getAsistencias() {
-        return this.asistencias ;
-    }
-
-    public void addAsistencia(Long asistencias) {
-        this.asistencias.add(asistencias);
-    }
-    public void removeAsistencia(Long asistencias) {
-        this.asistencias.remove(asistencias);
-    }
 }

@@ -15,4 +15,12 @@ public class PresentismoDTO {
     public void setCodigo(String codigoAsistencia) {
         this.codigoAsistencia = codigoAsistencia;
     }
+
+    public String getCodigoAsistencia() {
+        return codigoAsistencia;
+    }
+
+    public void setCodigoAsistencia(String codigoAsistencia) {
+        this.codigoAsistencia = codigoAsistencia;
+    }
 }

@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IAsistenciaRepository extends JpaRepository<Asistencia,Long> {
 
@@ -16,4 +18,7 @@ public interface IAsistenciaRepository extends JpaRepository<Asistencia,Long> {
     @Query("DELETE FROM Asistencia a WHERE a.eventoId = :eventoId")
     void deleteByEventoId(@Param("eventoId") Long eventoId);
 
+    List<Asistencia> findByEventoId(Long idEvento);
+
+    Asistencia findByDescripcion(String descripcion);
 }

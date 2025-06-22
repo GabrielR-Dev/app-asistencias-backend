@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,7 +62,7 @@ public class UsuarioService {
         u.setContrasenia(passwordEncoder.encode(u.getContrasenia()));
 
         userRepository.save(u);
-        return ResponseEntity.ok("Usuario creado con exito");
+        return ResponseEntity.ok(Map.of("mensaje", "Usuario creado con éxito"));
     }
 
     public ResponseEntity<?> deleteUser(Long id) {

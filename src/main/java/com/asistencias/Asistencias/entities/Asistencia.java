@@ -15,6 +15,7 @@ public class Asistencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String titulo;
     private String descripcion;
     private String nombreLugar;
@@ -27,22 +28,34 @@ public class Asistencia {
     private LocalTime horaFin;
     private Long eventoId;
 
+    private int cantColaboradores;
+
 
     public Asistencia() {
     }
 
-    public Asistencia(String titulo, String descripcion, String nombreLugar, String direccion, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin, Long evento) {
-        this.titulo = titulo;
+
+
+    public Asistencia(String descripcion, String nombreLugar, String direccion, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin, Long eventoId) {
         this.descripcion = descripcion;
         this.nombreLugar = nombreLugar;
         this.direccion = direccion;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.eventoId = evento;
+        this.eventoId = eventoId;
     }
 
-    public Asistencia(String titulo, String descripcion, String nombreLugar, String direccion, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin) {
+    public Asistencia(String descripcion, String nombreLugar, String direccion, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin) {
+        this.descripcion = descripcion;
+        this.nombreLugar = nombreLugar;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+    }
+
+    public Asistencia(String titulo, String descripcion, String nombreLugar, String direccion, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin, Long eventoId, int cantColaboradores) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.nombreLugar = nombreLugar;
@@ -50,6 +63,24 @@ public class Asistencia {
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+        this.eventoId = eventoId;
+        this.cantColaboradores = cantColaboradores;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getCantColaboradores() {
+        return cantColaboradores;
+    }
+
+    public void setCantColaboradores(int cantColaboradores) {
+        this.cantColaboradores = cantColaboradores;
     }
 
     public Long getId() {
@@ -60,13 +91,7 @@ public class Asistencia {
         this.id = id;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
 
     public String getDescripcion() {
         return descripcion;

@@ -1,5 +1,6 @@
 package com.asistencias.Asistencias.controller;
 
+import com.asistencias.Asistencias.dtos.EventoDTO;
 import com.asistencias.Asistencias.dtos.EventoResponseDTO;
 import com.asistencias.Asistencias.entities.Evento;
 import com.asistencias.Asistencias.service.EventoService;
@@ -22,14 +23,13 @@ public class EventoController {
         return eventoService.obtenerTodosLosEventosDelUsuario(id);
     }
 
-
-    /*@GetMapping("/{idEvento}")
-    public Evento obtenerPorId(@PathVariable Long idEvento) {
-        return eventoService.obtenerPorId(idEvento).orElseThrow(() -> new RuntimeException("Evento no encontrado"));
-    }*/
+    @GetMapping("/codigo/{codigo}")
+    public ResponseEntity<?> buscarPorCodigoInvitacion(@PathVariable String codigo) {
+        return eventoService.buscarPorCodInvitado(codigo);
+    }
 
     @PostMapping
-    public ResponseEntity<?> crear(@RequestBody Evento evento) {
+    public ResponseEntity<?> crear(@RequestBody EventoDTO evento) {
         return eventoService.crearEvento(evento);
     }
 

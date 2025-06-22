@@ -50,14 +50,30 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
+    /*@Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:4200","*"));
+        config.setAllowedOrigins(List.of("http://localhost:8100","*"));
         config.setAllowedMethods(List.of("*"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+
+        return source;
+    }*/
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+
+        // Esta línea permite cualquier origen si usás allowCredentials(true)
+        config.setAllowedOriginPatterns(List.of("*"));
+
+        config.setAllowedMethods(List.of("*")); // GET, POST, PUT, DELETE, etc.
+        config.setAllowedHeaders(List.of("*")); // Headers personalizados como Authorization
+        config.setAllowCredentials(true);       // Permite enviar cookies o Authorization headers
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

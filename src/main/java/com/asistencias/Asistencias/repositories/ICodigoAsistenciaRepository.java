@@ -31,4 +31,7 @@ public interface ICodigoAsistenciaRepository extends JpaRepository<CodigoAsisten
     @Query("SELECT c FROM CodigoAsistencia c WHERE c.asistenciaId = :idAsistencia")
     List<CodigoAsistencia> obtenerPorAsistenciaId(@Param("idAsistencia") Long idAsistencia);
 
+    List<CodigoAsistencia> findAllByAsistenciaId(Long idAsistencia);
+
+    void deleteAllByAsistenciaId(Long idAsistencia);
 }

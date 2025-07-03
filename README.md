@@ -27,16 +27,19 @@ Configuracion de archivo application.properties
   En el siguiente archivo puedes modificar datos para: trabajar de manera local o bien dejar por defecto ya que la DB por defecto se encuentra en un servicio en la nube.
 
   Si optas por levantarlo de manera locar dejo las propiedades a modificar:
-    spring.datasource.url= (ingresa datos locales)
-    spring.datasource.username= (ingresa datos locales)
-    spring.datasource.password= (ingresa datos locales)
+     spring.datasource.url= (ingresa datos locales)
+     spring.datasource.username= (ingresa datos locales)
+     spring.datasource.password= (ingresa datos locales)
 
     IMPORTAANT! si queres modificar la base de datos (Actualmente es postgresql) debes modificar el archivo POM 
       - quitar dependencia de postgreSQL
       - instalar las dependencias de la DB que se decea utilizar
-      - ademas de las primeras propiedades tambien debes modificar esta propiedad en application.properties: spring.datasource.driver-class-name=org.postgresql.Driver
+      - ademas de las primeras propiedades tambien debes modificar esta propiedad en application.properties: 
+            spring.datasource.driver-class-name=org.postgresql.Driver
 
 Enlace repositorio frontend: https://github.com/GabrielR-Dev/app-asistencias-frontend
+
+Descarga AsApp: LINK
 
 Colaboradores:
    - Valentin039

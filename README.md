@@ -9,9 +9,9 @@ Tecnologias utilizadas
 - PostgreSQL
 - JWT para autenticación  
 - HMAC-SHA para hash de contraseñas  
-- Configuracion de CORS y
+- Configuracion de CORS
 - Swagger para facilitar la documentacion y el consumo de la API
-- DTO (Data Trnsfer Object) para una comunicacion indirecta con las entidades
+- DTO (Data Trnsfer Object) para evitar una comunicacion directa con entidades
 
 Instalación
 

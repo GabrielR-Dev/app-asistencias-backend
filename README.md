@@ -36,10 +36,12 @@ Configuracion de archivo application.properties
       - instalar las dependencias de la DB que se decea utilizar
       - ademas de las primeras propiedades tambien debes modificar esta propiedad en application.properties: spring.datasource.driver-class-name=org.postgresql.Driver
 
+Enlace repositorio frontend: https://github.com/GabrielR-Dev/app-asistencias-frontend
+
 Colaboradores:
    - Valentin039
    - eemaevv12
-   - DiegoParihuancollo
+   - InTheSide1901
 
 Contacto
 GitHub: GabrielR-Dev

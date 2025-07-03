@@ -29,6 +29,7 @@ Instalacion
    npm install
 
 Configurar el archivo application.properties
+
 Si querés ejecutar el backend de forma local, deberas configurar tu base de datos PostgreSQL en el archivio application.properties:
 
       spring.application.name=Asistencias

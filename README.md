@@ -45,14 +45,19 @@ Si querés ejecutar el backend de forma local, deberas configurar tu base de dat
       - quitar dependencia de postgreSQL
       - instalar las dependencias de la DB que se decea utilizar
       - ademas de las primeras propiedades tambien debes modificar esta propiedad en application.properties: 
+
+      
          spring.datasource.driver-class-name=org.postgresql.Driver
 
 
 Swagger (Documentación de la API)
    Cuando la app esté corriendo, accede a la documentación Swagger en:
-   http://localhost:8080/swagger-ui/index.html
+   
+      http://localhost:8080/swagger-ui/index.html
 
-Enlace repositorio frontend: https://github.com/GabrielR-Dev/app-asistencias-frontend
+Enlace repositorio frontend: 
+
+      https://github.com/GabrielR-Dev/app-asistencias-frontend
 
 
 Descarga AsApp APK: [LINK](https://drive.google.com/file/d/1pZZsuIG_Qk3AW2p6qiC0k-xHDSmLrK0r/view)

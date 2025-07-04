@@ -41,10 +41,10 @@ Si querés ejecutar el backend de forma local, deberas configurar tu base de dat
       
    Si dejás la configuración por defecto, se conectara con una base de datos alojada en Render (nube).
 
-   IMPORTAANT! si queres modificar la base de datos (Actualmente es postgresql) debes modificar el archivo POM 
-      - quitar dependencia de postgreSQL
-      - instalar las dependencias de la DB que se decea utilizar
-      - ademas de las primeras propiedades tambien debes modificar esta propiedad en application.properties: 
+   IMPORTAANT! si queres modificar la base de datos (Actualmente es postgresql) debes modificar el archivo POM
+   - quitar dependencia de postgreSQL
+   - instalar las dependencias de la DB que se decea utilizar
+   - ademas de las primeras propiedades tambien debes modificar esta propiedad en application.properties:
       
          spring.datasource.driver-class-name=org.postgresql.Driver
 

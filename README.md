@@ -55,7 +55,7 @@ Swagger (Documentación de la API)
 Enlace repositorio frontend: https://github.com/GabrielR-Dev/app-asistencias-frontend
 
 
-Descarga AsApp: [LINK](https://drive.google.com/file/d/1pZZsuIG_Qk3AW2p6qiC0k-xHDSmLrK0r/view)
+Descarga AsApp APK: [LINK](https://drive.google.com/file/d/1pZZsuIG_Qk3AW2p6qiC0k-xHDSmLrK0r/view)
 
 Colaboradores:
    - @Valentin039 – Maquetador y desarrollo frontend

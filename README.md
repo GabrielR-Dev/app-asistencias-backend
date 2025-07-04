@@ -59,7 +59,7 @@ Enlace repositorio frontend:
       https://github.com/GabrielR-Dev/app-asistencias-frontend
 
 
-Descarga AsApp APK: [LINK](https://drive.google.com/file/d/1pZZsuIG_Qk3AW2p6qiC0k-xHDSmLrK0r/view)
+Descarga AsApp APK: [LINK](https://drive.google.com/drive/folders/1MvWpj9cjhEWZht-hf9NynAzdmd7FqoXO)
 
 Colaboradores:
    - @Valentin039 – Maquetador y desarrollo frontend
